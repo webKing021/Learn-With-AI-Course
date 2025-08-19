@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Slideshow</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .slide {
+      display: none;
+      position: relative;
+      animation: fade 1s ease-in-out;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+    }
+
+    .overlay h2 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .dot {
+      height: 14px;
+      width: 14px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .dot.active {
+      background-color: #333;
+    }
+
+    @keyframes fade {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+      <!-- Slide 1 -->
+      <div class="slide">
+        <img src="photos/1.png" alt="Project 1">
+        <div class="overlay">
+          <h2>Project One</h2>
+          <p>A responsive website design built with HTML, CSS, and JavaScript.</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <img src="photos/2.png" alt="Project 2">
+        <div class="overlay">
+          <h2>Project Two</h2>
+          <p>A mobile application prototype focusing on user experience.</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <img src="photos/3.png" alt="Project 3">
+        <div class="overlay">
+          <h2>Project Three</h2>
+          <p>A data visualization dashboard powered by D3.js.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dots navigation -->
+    <div class="dots">
+      <span class="dot" onclick="showSlide(0)"></span>
+      <span class="dot" onclick="showSlide(1)"></span>
+      <span class="dot" onclick="showSlide(2)"></span>
+    </div>
+  </div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let slideInterval;
+
+  function showSlide(index) {
+    if (index >= slides.length) index = 0;
+    if (index < 0) index = slides.length - 1;
+
+    slides.forEach((slide, i) => {
+      slide.style.display = i === index ? 'block' : 'none';
+      dots[i].classList.toggle('active', i === index);
+    });
+
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  // Auto-slide every 5 seconds
+  function startSlideShow() {
+    slideInterval = setInterval(nextSlide, 5000);
+  }
+
+  // Allow manual control with dots
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      showSlide(i);
+      clearInterval(slideInterval); // reset timer
+      startSlideShow();
+    });
+  });
+
+  // Initialize
+  showSlide(currentSlide);
+  startSlideShow();
+</script>
+
+</body>
+</html>

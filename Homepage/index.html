@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Krutarth Raychura - Personal Homepage</title>
+
+  <!-- Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.8;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Containers */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: #000;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin-bottom: 12px;
+      font-size: 2.2em;
+      font-weight: 600;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #aaa;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 70px 20px;
+    }
+    section h2 {
+      margin-bottom: 30px;
+      font-size: 2em;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Projects / Slideshow */
+    .slideshow-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .slide {
+      display: none;
+      position: relative;
+      animation: fade 1s ease-in-out;
+    }
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+    }
+    .overlay h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .dots {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .dot {
+      height: 14px;
+      width: 14px;
+      margin: 0 6px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .dot.active {
+      background-color: #000;
+    }
+    @keyframes fade {
+      from {opacity: 0.4;}
+      to {opacity: 1;}
+    }
+
+    /* About Section */
+    #about .about-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: left;
+    }
+    #about img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    #about p {
+      margin-bottom: 15px;
+    }
+
+    /* Skills Section */
+    .skill {
+      margin-bottom: 40px;
+    }
+    .skill h3 {
+      margin-bottom: 5px;
+      font-size: 1.2em;
+    }
+    .progress-bar {
+      background: #eee;
+      border-radius: 25px;
+      overflow: hidden;
+      height: 25px;
+    }
+    .progress {
+      background: #000;
+      height: 100%;
+      color: #fff;
+      text-align: center;
+      line-height: 25px;
+      font-size: 14px;
+      transition: width 0.6s ease;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .social-links {
+      margin-top: 15px;
+    }
+    .social-links a {
+      color: #fff;
+      margin: 0 12px;
+      font-size: 22px;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #999;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8em; }
+      nav a { display: inline-block; margin: 8px 12px; }
+      #about .about-content { text-align: center; }
+      #about .about-content div { text-align: center; }
+    }
+    @media (max-width: 480px) {
+      body { font-size: 16px; }
+      section { padding: 50px 15px; }
+      #about img { width: 110px; height: 110px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Krutarth Raychura</h1>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+    </nav>
+  </header>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2>My Projects</h2>
+      <div class="slideshow-container">
+        <div class="slide">
+          <img src="photos/1.png" alt="Project 1">
+          <div class="overlay">
+            <h2>Project One</h2>
+            <p>A responsive website design built with HTML, CSS, and JavaScript.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="photos/2.png" alt="Project 2">
+          <div class="overlay">
+            <h2>Project Two</h2>
+            <p>A mobile application prototype focusing on user experience.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="photos/3.png" alt="Project 3">
+          <div class="overlay">
+            <h2>Project Three</h2>
+            <p>A data visualization dashboard powered by D3.js.</p>
+          </div>
+        </div>
+      </div>
+      <div class="dots">
+        <span class="dot" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <img src="photo.jpg" alt="Krutarth Raychura">
+        <div>
+          <p>Hello! 👋 I’m <strong>Krutarth Raychura</strong>, a passionate learner and developer.  
+          I love building projects, exploring new technologies, and solving real-world problems.</p>
+          <p><a href="resume.pdf" target="_blank">📄 View My Resume</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2>My Skills</h2>
+      <div class="skill">
+        <h3>HTML</h3>
+        <p>Building structured, semantic, and accessible web pages.</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 90%;">90%</div>
+        </div>
+      </div>
+      <div class="skill">
+        <h3>CSS</h3>
+        <p>Designing responsive layouts, styling components, and animations.</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 80%;">80%</div>
+        </div>
+      </div>
+      <div class="skill">
+        <h3>JavaScript</h3>
+        <p>Creating interactive web applications with dynamic functionality.</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 75%;">75%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Krutarth Raychura. All Rights Reserved.</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <!-- Slideshow Script -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let slideInterval;
+
+    function showSlide(index) {
+      if (index >= slides.length) index = 0;
+      if (index < 0) index = slides.length - 1;
+
+      slides.forEach((slide, i) => {
+        slide.style.display = i === index ? 'block' : 'none';
+        dots[i].classList.toggle('active', i === index);
+      });
+
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function startSlideShow() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showSlide(i);
+        clearInterval(slideInterval);
+        startSlideShow();
+      });
+    });
+
+    showSlide(currentSlide);
+    startSlideShow();
+  </script>
+</body>
+</html>
