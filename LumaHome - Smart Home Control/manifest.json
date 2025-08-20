@@ -1,0 +1,21 @@
+{
+  "name": "LumaHome",
+  "short_name": "LumaHome",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#28074a",
+  "theme_color": "#bd4de5",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/LumaHome.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/LumaHome.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
