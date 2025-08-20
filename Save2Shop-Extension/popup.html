@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Save2Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="icon/Save2Shop.png" type="image/png">
+  <!-- Icon font: Material Symbols (Outlined) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400" rel="stylesheet" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>Save2Shop</h1>
+  </header>
+
+  <!-- Preview of current item -->
+  <section class="preview">
+    <label>Current Page</label>
+    <p id="previewText">Loading current tab...</p>
+  </section>
+
+  <section class="controls">
+    <label for="category">Category</label>
+    <select id="category" aria-label="Category" required>
+      <option value="" disabled selected>Select a category</option>
+      <option value="Books">📚 Books</option>
+      <option value="Clothes">👕 Clothes</option>
+      <option value="Shoes">👟 Shoes</option>
+      <option value="Electronics">📱 Electronics</option>
+      <option value="Pets">🐾 Pets</option>
+      <option value="Health">💊 Health</option>
+      <option value="Home">🏠 Home & Garden</option>
+      <option value="Sports">⚽ Sports</option>
+      <option value="Beauty">💄 Beauty</option>
+      <option value="Food">🍕 Food</option>
+    </select>
+    <button id="saveBtn" type="button" title="Save the current tab">
+      <span class="btn-text">Save Item</span>
+    </button>
+  </section>
+
+  <section class="list-header">
+    <div class="left">
+      <span class="items-title">Saved Items</span>
+      <span id="itemCount" class="item-count"></span>
+    </div>
+    <div class="right">
+      <button id="clearBtn" type="button" class="linklike" title="Remove all saved items">Clear all</button>
+    </div>
+  </section>
+
+  <div id="items" aria-live="polite"></div>
+
+  <!-- Template: delete button now uses an icon font -->
+  <template id="itemTemplate">
+    <li class="item">
+      <span class="badge"></span>
+      <a class="link" target="_blank" rel="noopener noreferrer"></a>
+      <button class="delete" title="Remove item" aria-label="Remove item">
+        <span class="material-symbols-outlined" aria-hidden="true">delete</span>
+      </button>
+    </li>
+  </template>
+
+  <footer>
+    <small id="status" role="status" aria-live="polite"></small>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
