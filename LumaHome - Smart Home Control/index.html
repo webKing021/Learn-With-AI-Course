@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LumaHome - Smart Home Control</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>LumaHome</h1>
+        <p>Smart Home Control</p>
+    </header>
+
+    <!-- Lighting Section -->
+    <section id="lighting">
+        <h2><i class="fas fa-lightbulb"></i> Lighting</h2>
+        <label class="switch">
+            <input type="checkbox" id="lightToggle" onchange="toggleLights(this)">
+            <span class="slider"></span>
+        </label>
+    </section>
+
+    <!-- Temperature Section -->
+    <section id="temperature">
+        <h2><i class="fas fa-thermometer-half"></i> Temperature</h2>
+        <div class="temp-display" id="tempDisplay">78°F</div>
+        <div class="temp-buttons">
+            <button onclick="decreaseTemp()"><i class="fas fa-arrow-down"></i> Decrease</button>
+            <button onclick="increaseTemp()"><i class="fas fa-arrow-up"></i> Increase</button>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music">
+        <h2><i class="fas fa-music"></i> Music</h2>
+        <div class="song-display" id="songDisplay">No song playing</div>
+        <div class="music-buttons">
+            <button id="playBtn" onclick="playMusic()"><i class="fas fa-play"></i> Play</button>
+            <button onclick="pauseMusic()"><i class="fas fa-pause"></i> Pause</button>
+            <button onclick="stopMusic()"><i class="fas fa-stop"></i> Stop</button>
+            <button onclick="nextTrack()"><i class="fas fa-forward"></i> Next</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
