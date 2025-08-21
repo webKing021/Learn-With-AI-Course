@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#290000">
+    <title>Dice Roller (Krutarth Raychura)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon/DiceRoller.png">
+    <link rel="apple-touch-icon" href="icon/DiceRoller.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 Dice Roller</h1>
+        </header>
+
+        <main>
+            <div class="controls">
+                <div class="input-group">
+                    <label for="diceType">Dice Type</label>
+                    <select id="diceType">
+                        <option value="4">D4 (4-sided)</option>
+                        <option value="6" selected>D6 (6-sided)</option>
+                        <option value="8">D8 (8-sided)</option>
+                        <option value="10">D10 (10-sided)</option>
+                        <option value="12">D12 (12-sided)</option>
+                        <option value="20">D20 (20-sided)</option>
+                        <option value="100">D100 (100-sided)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="diceCount">Number of Dice</label>
+                    <input type="number" id="diceCount" min="1" max="20" value="1">
+                </div>
+
+                <div class="button-group">
+                    <button id="rollBtn" class="btn btn-primary">🎲 Roll Dice</button>
+                    <button id="clearBtn" class="btn btn-secondary">🗑️ Clear</button>
+                </div>
+            </div>
+
+            <div class="results" id="results">
+                <div class="dice-display" id="diceDisplay"></div>
+                <div class="total-display" id="totalDisplay">
+                    <span class="total-label">Total:</span>
+                    <span class="total-value" id="totalValue">0</span>
+                </div>
+            </div>
+
+            <div class="stats" id="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Rolls:</span>
+                    <span class="stat-value" id="rollCount">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Average:</span>
+                    <span class="stat-value" id="averageValue">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Highest:</span>
+                    <span class="stat-value" id="highestValue">0</span>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Dice Roller. Developed by Krutarth Raychura Using AI. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Register service worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // Handle URL parameters for shortcuts
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const dice = urlParams.get('dice');
+            const count = urlParams.get('count');
+            
+            if (dice) {
+                document.getElementById('diceType').value = dice;
+            }
+            if (count) {
+                document.getElementById('diceCount').value = count;
+            }
+        });
+    </script>
+</body>
+</html>

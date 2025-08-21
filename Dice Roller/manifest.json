@@ -1,0 +1,63 @@
+{
+  "name": "Roll The Dice",
+  "short_name": "DiceRoller",
+  "description": "A feature-complete dice rolling app with multiple dice types, statistics tracking, and beautiful animations",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#290000",
+  "theme_color": "#290000",
+  "orientation": "portrait-primary",
+  "scope": "./",
+  "lang": "en",
+  "categories": ["games", "utilities", "entertainment"],
+  "icons": [
+    {
+      "src": "icon/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Roll D6",
+      "short_name": "Roll D6",
+      "description": "Quick roll with standard 6-sided dice",
+      "url": "./index.html?dice=6&count=1",
+      "icons": [
+        {
+          "src": "icon/icon-512.png",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Roll D20",
+      "short_name": "Roll D20",
+      "description": "Quick roll with 20-sided dice",
+      "url": "./index.html?dice=20&count=1",
+      "icons": [
+        {
+          "src": "icon/icon-512.png",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "screenshots": [
+    {
+      "src": "screenshot-mobile.png",
+      "sizes": "320x568",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}

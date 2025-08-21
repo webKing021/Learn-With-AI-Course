@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark: #290000;
+    --yellow: #F7CE65;
+    --beige: #FFFEBD;
+    --shadow: rgba(41, 0, 0, 0.3);
+    --light-shadow: rgba(247, 206, 101, 0.2);
+}
+
+body {
+    font-family: 'Advent Pro', sans-serif;
+    background: linear-gradient(135deg, var(--dark) 0%, #3d0000 100%);
+    color: var(--beige);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 254, 189, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 2px solid rgba(247, 206, 101, 0.2);
+    padding: 30px;
+    box-shadow: 0 20px 40px var(--shadow);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--yellow);
+    text-shadow: 2px 2px 4px var(--shadow);
+    margin-bottom: 10px;
+}
+
+.controls {
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--yellow);
+    margin-bottom: 8px;
+}
+
+select, input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    font-family: 'Advent Pro', sans-serif;
+    background: rgba(255, 254, 189, 0.1);
+    border: 2px solid rgba(247, 206, 101, 0.3);
+    border-radius: 12px;
+    color: var(--beige);
+    transition: all 0.3s ease;
+}
+
+select:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: var(--yellow);
+    background: rgba(255, 254, 189, 0.15);
+    box-shadow: 0 0 15px var(--light-shadow);
+}
+
+select option {
+    background: var(--dark);
+    color: var(--beige);
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn {
+    flex: 1;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Advent Pro', sans-serif;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--yellow) 0%, #f5c542 100%);
+    color: var(--dark);
+    box-shadow: 0 8px 20px rgba(247, 206, 101, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(247, 206, 101, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: rgba(255, 254, 189, 0.1);
+    color: var(--beige);
+    border: 2px solid rgba(247, 206, 101, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 254, 189, 0.2);
+    border-color: var(--yellow);
+    transform: translateY(-2px);
+}
+
+.results {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.dice-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    min-height: 80px;
+    align-items: center;
+}
+
+.dice {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--yellow) 0%, #f5c542 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    box-shadow: 0 8px 20px rgba(247, 206, 101, 0.3);
+    animation: rollIn 0.6s ease-out;
+    border: 3px solid rgba(41, 0, 0, 0.2);
+}
+
+@keyframes rollIn {
+    0% {
+        transform: rotate(0deg) scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 1;
+    }
+}
+
+.total-display {
+    background: rgba(255, 254, 189, 0.1);
+    border: 2px solid rgba(247, 206, 101, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.total-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--yellow);
+    margin-right: 10px;
+}
+
+.total-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--beige);
+    text-shadow: 1px 1px 2px var(--shadow);
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 254, 189, 0.05);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(247, 206, 101, 0.2);
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--yellow);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--beige);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .dice {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    .dice-display {
+        gap: 10px;
+        min-height: 60px;
+    }
+    
+    .total-value {
+        font-size: 1.8rem;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .stat-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .stat-label {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .dice {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .total-value {
+        font-size: 1.6rem;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .container {
+        border: 3px solid var(--yellow);
+    }
+    
+    select, input[type="number"] {
+        border: 2px solid var(--yellow);
+    }
+    
+    .btn-secondary {
+        border: 2px solid var(--yellow);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .dice {
+        animation: none;
+    }
+    
+    .btn {
+        transition: none;
+    }
+    
+    select, input[type="number"] {
+        transition: none;
+    }
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    color: rgba(255, 254, 189, 0.7);
+    font-size: 0.85rem;
+    font-weight: 300;
+    border-top: 1px solid rgba(247, 206, 101, 0.2);
+    background: rgba(255, 254, 189, 0.02);
+    border-radius: 0 0 20px 20px;
+}
