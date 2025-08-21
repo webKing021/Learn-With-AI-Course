@@ -20,8 +20,19 @@ I've completed several **Coursera Learn with AI Challenges** powered by **Scrimb
 ### 🔹 [LumaHome](https://lumahome.netlify.app/)  
 A modern AI-powered website showcasing smart home integration.  
 
+### 🔹 [DiceRoller](https://krutarth-diceroller.netlify.app/)  
+A modern AI-powered WebApp showcasing Roll the Dice.
+
 ### 🔹 Save2Shop (Chrome Extension)  
 A handy browser extension to **save products while shopping online** for later comparison. *(Link coming soon!)*  
+
+### 🔹 [Python String Operations](https://string-oppy.netlify.app/)  
+A modern AI-powered WebApp showcasing Python String Operations.
+
+### 🔹 [Antique Aces](https://krutarth-antiques-aces.netlify.app/)  
+A modern AI-powered WebApp showcasing Antique Aces.
+
+> and much more... also you can see my this GitHub Repo you will find more Mini-App Projects also you can checkout Preview images down below.
 
 ---
 
