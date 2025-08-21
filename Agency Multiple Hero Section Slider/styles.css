@@ -1,0 +1,1983 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: #000;
+}
+
+/* Import additional fonts for unique themes */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Fascinate&family=Monoton&family=Bungee+Shade&family=Righteous&family=Audiowide&family=Orbitron:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Roboto+Mono:wght@300;400;700&family=Fira+Code:wght@300;400;700&display=swap');
+
+/* Slider Container */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Hero Slide Base */
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hero-slide.prev {
+    transform: translateX(-100%);
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.hero-text {
+    animation: slideInUp 1s ease-out 0.5s both;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.hero-description {
+    color: #e0e0e0;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+}
+
+.hero-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== GAMING AGENCY - CYBERPUNK 3D EXPERIENCE ===== */
+.gaming-agency {
+    background: 
+        radial-gradient(ellipse at 20% 80%, rgba(255, 0, 150, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+        linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a0033 50%, #001a33 75%, #000000 100%);
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Cyberpunk HUD Elements */
+.cyberpunk-hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.hud-corner {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #00ffff;
+    opacity: 0.7;
+}
+
+.hud-corner.top-left {
+    top: 20px;
+    left: 20px;
+    border-right: none;
+    border-bottom: none;
+    animation: hudPulse 3s ease-in-out infinite;
+}
+
+.hud-corner.top-right {
+    top: 20px;
+    right: 20px;
+    border-left: none;
+    border-bottom: none;
+    animation: hudPulse 3s ease-in-out infinite 0.5s;
+}
+
+.hud-corner.bottom-left {
+    bottom: 20px;
+    left: 20px;
+    border-right: none;
+    border-top: none;
+    animation: hudPulse 3s ease-in-out infinite 1s;
+}
+
+.hud-corner.bottom-right {
+    bottom: 20px;
+    right: 20px;
+    border-left: none;
+    border-top: none;
+    animation: hudPulse 3s ease-in-out infinite 1.5s;
+}
+
+.data-stream {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    color: #00ff00;
+    letter-spacing: 2px;
+    animation: dataFlicker 2s ease-in-out infinite;
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+    position: relative;
+    animation: glitch 2s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    animation: glitch-1 0.5s infinite;
+    color: #ff00ff;
+    z-index: -1;
+}
+
+.glitch-text::after {
+    animation: glitch-2 0.5s infinite;
+    color: #00ffff;
+    z-index: -2;
+}
+
+.level-indicator {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff0080, #00ffff);
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+    animation: levelGlow 2s ease-in-out infinite;
+}
+
+.status-bar {
+    width: 300px;
+    height: 20px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    margin: 15px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.status-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #00ffff, #ff0080);
+    border-radius: 10px;
+    animation: powerSurge 3s ease-in-out infinite;
+}
+
+.status-bar span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.gaming-agency .hero-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(3rem, 8vw, 7rem);
+    color: #ffffff;
+    text-shadow: 
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 15px #00ffff,
+        2px 2px 0px #000000,
+        -2px -2px 0px #000000;
+    margin: 20px 0;
+    transform: perspective(500px) rotateX(15deg);
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.gaming-agency .hero-subtitle {
+    color: #ffffff;
+    font-family: 'Audiowide', cursive;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    text-shadow: 
+        0 0 8px #ff0080,
+        1px 1px 0px #000000,
+        -1px -1px 0px #000000;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.cyber-btn {
+    position: relative;
+    background: linear-gradient(45deg, #00ffff, #ff0080, #00ffff);
+    background-size: 300% 300%;
+    color: #000;
+    border: none;
+    padding: 15px 40px;
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    overflow: hidden;
+    animation: cyberPulse 3s ease-in-out infinite;
+    transform: perspective(500px) rotateX(10deg);
+}
+
+.cyber-btn:hover {
+    animation: cyberActivate 0.5s ease-in-out;
+    transform: perspective(500px) rotateX(0deg) translateY(-5px);
+}
+
+.btn-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.8) 2px, transparent 2px),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 128, 0.8) 2px, transparent 2px);
+    background-size: 20px 20px;
+    animation: particleMove 2s linear infinite;
+    opacity: 0;
+}
+
+.cyber-btn:hover .btn-particles {
+    opacity: 1;
+}
+
+/* ===== GAMING AGENCY BACKGROUND EFFECTS ===== */
+.matrix-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 98px,
+            rgba(0, 255, 255, 0.1) 100px,
+            rgba(0, 255, 255, 0.1) 102px);
+    animation: matrixRain 3s linear infinite;
+    z-index: 1;
+}
+
+.cyber-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 128, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: cyberGrid 20s linear infinite;
+    z-index: 1;
+}
+
+.hologram-layers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.05) 50%, transparent 70%);
+    animation: hologramScan 6s linear infinite;
+    z-index: 1;
+}
+
+.energy-core {
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 0, 128, 0.3) 0%, transparent 70%);
+    animation: energyCore 4s ease-in-out infinite;
+    z-index: 1;
+}
+
+.floating-cubes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.2) 3px, transparent 3px),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 128, 0.2) 3px, transparent 3px),
+        radial-gradient(circle at 50% 10%, rgba(0, 255, 255, 0.15) 2px, transparent 2px);
+    background-size: 100px 100px, 150px 150px, 80px 80px;
+    animation: floatingCubes 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* ===== MOVIE AGENCY - VINTAGE HOLLYWOOD GLAMOUR ===== */
+.movie-agency {
+    background: 
+        radial-gradient(ellipse at 30% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(220, 20, 60, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #2d1b1b 50%, #1a0a0a 75%, #000000 100%);
+    color: #f8f8f8;
+    overflow: hidden;
+}
+
+/* Vintage Frame Elements */
+.vintage-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.art-deco-border {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    border: 3px solid #ffd700;
+    border-image: linear-gradient(45deg, #ffd700, #ff6b6b, #ffd700) 1;
+    opacity: 0.6;
+    animation: borderGlow 4s ease-in-out infinite;
+}
+
+.art-deco-border::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 10px;
+}
+
+.golden-curtains {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.curtain {
+    position: absolute;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(139, 69, 19, 0.8) 0%,
+        rgba(160, 82, 45, 0.6) 50%,
+        rgba(139, 69, 19, 0.8) 100%);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.left-curtain {
+    left: 0;
+    transform: skewX(-5deg);
+    animation: curtainSway 6s ease-in-out infinite;
+}
+
+.right-curtain {
+    right: 0;
+    transform: skewX(5deg);
+    animation: curtainSway 6s ease-in-out infinite reverse;
+}
+
+.spotlight-circle {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spotlightPulse 5s ease-in-out infinite;
+}
+
+.film-badge {
+    display: inline-block;
+    background: linear-gradient(45deg, #8b4513, #ffd700);
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    animation: badgeShine 3s ease-in-out infinite;
+}
+
+.movie-agency .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    color: #ffd700;
+    text-shadow: 
+        0 0 10px #ffd700,
+        0 0 20px #ffd700,
+        0 0 40px #ffd700,
+        2px 2px 0px #8b4513,
+        4px 4px 0px #654321;
+    margin: 20px 0;
+    letter-spacing: 3px;
+    animation: vintageGlow 4s ease-in-out infinite;
+}
+
+.marquee-lights {
+    width: 100%;
+    height: 10px;
+    background: 
+        repeating-linear-gradient(90deg, 
+            transparent 0px,
+            transparent 20px,
+            #ffd700 20px,
+            #ffd700 25px,
+            transparent 25px,
+            transparent 45px);
+    margin: 15px 0;
+    animation: marqueeLights 2s linear infinite;
+    border-radius: 5px;
+}
+
+.script-font {
+    font-family: 'Cinzel', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: #ff6b6b;
+    text-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+    margin-bottom: 20px;
+}
+
+.film-reel-divider {
+    width: 200px;
+    height: 20px;
+    background: 
+        repeating-linear-gradient(90deg,
+            #333 0px,
+            #333 15px,
+            #ffd700 15px,
+            #ffd700 20px);
+    margin: 20px auto;
+    border-radius: 10px;
+    animation: reelSpin 3s linear infinite;
+}
+
+.vintage-btn {
+    position: relative;
+    background: linear-gradient(45deg, #ffd700, #ff6b6b, #ffd700);
+    background-size: 300% 300%;
+    color: #1a1a1a;
+    border: 3px solid #8b4513;
+    padding: 15px 40px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: vintageButtonGlow 3s ease-in-out infinite;
+    transform: perspective(500px) rotateX(5deg);
+}
+
+.vintage-btn:hover {
+    transform: perspective(500px) rotateX(0deg) translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shineEffect 3s ease-in-out infinite;
+}
+
+.vintage-camera {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 150px;
+}
+
+.camera-body {
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.camera-lens {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #333, #000);
+    border: 3px solid #ffd700;
+    animation: lensRotate 10s linear infinite;
+}
+
+.film-strip-side {
+    position: absolute;
+    right: -20px;
+    top: 10%;
+    width: 30px;
+    height: 80%;
+    background: 
+        repeating-linear-gradient(0deg,
+            #333 0px,
+            #333 10px,
+            #ffd700 10px,
+            #ffd700 15px);
+    border-radius: 5px;
+    animation: filmMove 2s linear infinite;
+}
+
+/* ===== MOVIE AGENCY BACKGROUND EFFECTS ===== */
+.old-film-grain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(220, 20, 60, 0.1) 2px, transparent 2px);
+    background-size: 50px 50px;
+    animation: oldFilmGrain 2s ease-in-out infinite;
+    z-index: 1;
+}
+
+.spotlight-sweep {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(255, 215, 0, 0.15) 80%);
+    animation: spotlightSweep 12s ease-in-out infinite;
+    z-index: 1;
+}
+
+.floating-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.8) 2px, transparent 2px),
+        radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.6) 1px, transparent 1px),
+        radial-gradient(circle at 30% 60%, rgba(255, 215, 0, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.7) 2px, transparent 2px);
+    background-size: 200px 200px, 150px 150px, 100px 100px, 250px 250px;
+    animation: floatingStars 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.vintage-vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 2;
+}
+
+/* ===== ROBOTICS AGENCY - HOLOGRAPHIC INTERFACE ===== */
+.robotics-agency {
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 149, 0, 0.15) 0%, transparent 50%),
+        linear-gradient(135deg, #000000 0%, #0c0c0c 25%, #1e3c72 50%, #2a5298 75%, #0c0c0c 100%);
+    color: #e0e0e0;
+    overflow: hidden;
+}
+
+/* Holographic Interface Elements */
+.holographic-interface {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.holo-panel {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 212, 255, 0.05));
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    animation: holoPanelFlicker 4s ease-in-out infinite;
+}
+
+.left-panel {
+    top: 20%;
+    left: 5%;
+    width: 200px;
+    height: 150px;
+    padding: 15px;
+}
+
+.right-panel {
+    top: 60%;
+    right: 5%;
+    width: 180px;
+    height: 120px;
+}
+
+.system-stats {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: #00d4ff;
+}
+
+.stat-line {
+    margin-bottom: 8px;
+    animation: statUpdate 3s ease-in-out infinite;
+}
+
+.diagnostic-grid {
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: gridScan 2s linear infinite;
+}
+
+.scanning-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    animation: scanLine 3s linear infinite;
+}
+
+.robot-silhouette {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 149, 0, 0.2));
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    animation: robotPulse 4s ease-in-out infinite;
+}
+
+.ai-indicator {
+    display: inline-block;
+    background: linear-gradient(45deg, #00d4ff, #ff9500);
+    color: #000;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 15px;
+    animation: aiPulse 2s ease-in-out infinite;
+}
+
+.robotics-agency .hero-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    color: #00d4ff;
+    text-shadow: 
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff,
+        0 0 40px #00d4ff;
+    margin: 20px 0;
+    letter-spacing: 4px;
+    animation: holoGlow 3s ease-in-out infinite;
+}
+
+.dna-helix {
+    width: 100px;
+    height: 20px;
+    background: 
+        repeating-linear-gradient(45deg,
+            #00d4ff 0px,
+            #00d4ff 5px,
+            transparent 5px,
+            transparent 10px,
+            #ff9500 10px,
+            #ff9500 15px,
+            transparent 15px,
+            transparent 20px);
+    margin: 15px auto;
+    border-radius: 10px;
+    animation: helixRotate 4s linear infinite;
+}
+
+.progress-bars {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    margin-bottom: 15px;
+}
+
+.progress-bar span {
+    display: block;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: #00d4ff;
+    margin-bottom: 5px;
+}
+
+.bar {
+    width: 200px;
+    height: 8px;
+    background: rgba(0, 212, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00d4ff, #ff9500);
+    border-radius: 4px;
+    animation: progressFill 3s ease-in-out infinite;
+}
+
+.robotics-agency .hero-subtitle {
+    color: #ff9500;
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    text-shadow: 0 0 15px rgba(255, 149, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.quantum-btn {
+    position: relative;
+    background: linear-gradient(45deg, #00d4ff, #ff9500, #00d4ff);
+    background-size: 300% 300%;
+    color: #000;
+    border: 2px solid rgba(0, 212, 255, 0.5);
+    padding: 15px 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    animation: quantumPulse 3s ease-in-out infinite;
+    transform: perspective(500px) rotateX(8deg);
+}
+
+.quantum-btn:hover {
+    transform: perspective(500px) rotateX(0deg) translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
+}
+
+.quantum-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(0, 212, 255, 0.8) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(255, 149, 0, 0.8) 2px, transparent 2px);
+    background-size: 15px 15px;
+    animation: quantumFloat 2s linear infinite;
+    opacity: 0;
+}
+
+.quantum-btn:hover .quantum-particles {
+    opacity: 1;
+}
+
+/* ===== ROBOTICS AGENCY BACKGROUND EFFECTS ===== */
+.quantum-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 30% 70%, rgba(0, 212, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(255, 149, 0, 0.15) 0%, transparent 50%);
+    animation: quantumField 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+.neural-network {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(-45deg, rgba(255, 149, 0, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px, 40px 40px;
+    animation: neuralNetwork 15s linear infinite;
+    z-index: 1;
+}
+
+.data-streams {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 48px,
+            rgba(0, 212, 255, 0.1) 50px,
+            rgba(0, 212, 255, 0.1) 52px);
+    animation: dataStreams 4s linear infinite;
+    z-index: 1;
+}
+
+.hologram-distortion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 212, 255, 0.05) 50%,
+        transparent 70%
+    );
+    animation: hologramDistortion 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* ===== WEB AGENCY - MINIMALIST CODE ART ===== */
+.web-agency {
+    background: 
+        radial-gradient(ellipse at 20% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #000000 0%, #020202 25%, #0f172a 50%, #1e293b 75%, #020202 100%);
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Code Editor Interface */
+.code-editor {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 300px;
+    height: 200px;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 8px;
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 4;
+    animation: editorGlow 4s ease-in-out infinite;
+}
+
+.editor-header {
+    height: 35px;
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.editor-tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tab {
+    padding: 5px 12px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: #64748b;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    color: #0ea5e9;
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.line-numbers {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    width: 40px;
+    height: calc(100% - 35px);
+    background: rgba(30, 41, 59, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    gap: 5px;
+}
+
+.line-numbers span {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: #475569;
+}
+
+/* Terminal Window */
+.terminal-window {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 8px;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    z-index: 4;
+    animation: terminalFlicker 3s ease-in-out infinite;
+}
+
+.terminal-header {
+    height: 30px;
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-buttons .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-buttons .red { background: #ff5f56; }
+.terminal-buttons .yellow { background: #ffbd2e; }
+.terminal-buttons .green { background: #27ca3f; }
+
+.terminal-body {
+    padding: 15px;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+}
+
+.command-line {
+    color: #00ff00;
+}
+
+.prompt {
+    color: #0ea5e9;
+    margin-right: 8px;
+}
+
+.typing-text {
+    animation: typeWriter 4s steps(20) infinite;
+}
+
+.version-tag {
+    display: inline-block;
+    background: linear-gradient(45deg, #0ea5e9, #60a5fa);
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-family: 'Fira Code', monospace;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 15px;
+    animation: versionPulse 3s ease-in-out infinite;
+}
+
+.web-agency .hero-title {
+    font-family: 'Fira Code', monospace;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: #0ea5e9;
+    text-shadow: 
+        0 0 10px #0ea5e9,
+        0 0 20px #0ea5e9,
+        0 0 40px #0ea5e9;
+    margin: 20px 0;
+    letter-spacing: 2px;
+    animation: codeGlow 3s ease-in-out infinite;
+}
+
+.highlight {
+    color: #60a5fa;
+    text-shadow: 
+        0 0 10px #60a5fa,
+        0 0 20px #60a5fa;
+}
+
+.syntax-highlight {
+    font-family: 'Fira Code', monospace;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin: 15px 0;
+    animation: syntaxFlicker 2s ease-in-out infinite;
+}
+
+.tag {
+    color: #f59e0b;
+}
+
+.content {
+    color: #10b981;
+    margin: 0 8px;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.tech {
+    padding: 6px 14px;
+    background: rgba(14, 165, 233, 0.2);
+    border: 1px solid rgba(14, 165, 233, 0.4);
+    border-radius: 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: #0ea5e9;
+    animation: techFloat 3s ease-in-out infinite;
+}
+
+.tech:nth-child(2) { animation-delay: 0.5s; }
+.tech:nth-child(3) { animation-delay: 1s; }
+.tech:nth-child(4) { animation-delay: 1.5s; }
+
+.code-btn {
+    position: relative;
+    background: linear-gradient(45deg, #0ea5e9, #60a5fa, #0ea5e9);
+    background-size: 300% 300%;
+    color: #000;
+    border: 2px solid rgba(14, 165, 233, 0.5);
+    padding: 15px 40px;
+    font-family: 'Fira Code', monospace;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    animation: codePulse 3s ease-in-out infinite;
+    transform: perspective(500px) rotateX(5deg);
+}
+
+.code-btn:hover {
+    transform: perspective(500px) rotateX(0deg) translateY(-3px);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
+}
+
+.bracket {
+    color: #f59e0b;
+    font-size: 18px;
+    animation: bracketPulse 2s ease-in-out infinite;
+}
+
+.floating-code {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 200px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    backdrop-filter: blur(5px);
+    animation: codeFloat 6s ease-in-out infinite;
+}
+
+.code-snippet {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+}
+
+.code-line {
+    margin-bottom: 5px;
+    color: #64748b;
+    animation: codeHighlight 4s ease-in-out infinite;
+}
+
+.code-line:nth-child(1) { color: #f59e0b; }
+.code-line:nth-child(2) { color: #10b981; animation-delay: 1s; }
+.code-line:nth-child(3) { color: #8b5cf6; animation-delay: 2s; }
+
+.web-agency .hero-subtitle {
+    color: #60a5fa;
+    font-family: 'Fira Code', monospace;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    text-shadow: 0 0 15px rgba(96, 165, 250, 0.5);
+    margin-bottom: 20px;
+}
+
+/* ===== WEB AGENCY BACKGROUND EFFECTS ===== */
+.binary-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 18px,
+            rgba(14, 165, 233, 0.1) 20px,
+            rgba(14, 165, 233, 0.1) 22px);
+    animation: binaryRain 2s linear infinite;
+    z-index: 1;
+}
+
+.grid-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(14, 165, 233, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: gridPattern 10s linear infinite;
+    z-index: 1;
+}
+
+.cursor-blink {
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    width: 2px;
+    height: 30px;
+    background: #0ea5e9;
+    animation: cursorBlink 1s infinite;
+    z-index: 2;
+}
+
+.syntax-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 15% 25%, rgba(14, 165, 233, 0.4) 2px, transparent 2px),
+        radial-gradient(circle at 85% 75%, rgba(96, 165, 250, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 45% 15%, rgba(245, 158, 11, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 75% 45%, rgba(16, 185, 129, 0.3) 2px, transparent 2px);
+    background-size: 120px 120px, 80px 80px, 100px 100px, 150px 150px;
+    animation: syntaxParticles 12s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Navigation Controls */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    z-index: 20;
+    transform: translateY(-50%);
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* Slide Indicators */
+.slide-indicators {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 20;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* ===== COMPREHENSIVE ANIMATIONS FOR ALL THEMES ===== */
+
+/* Base Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== GAMING AGENCY ANIMATIONS ===== */
+@keyframes hudPulse {
+    0%, 100% { 
+        opacity: 0.7;
+        border-color: #00ffff;
+    }
+    50% { 
+        opacity: 1;
+        border-color: #ff0080;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+}
+
+@keyframes dataFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+    75% { opacity: 0.9; }
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    10% { transform: translate(-2px, -1px); }
+    20% { transform: translate(-1px, 2px); }
+    30% { transform: translate(1px, -1px); }
+    40% { transform: translate(-1px, 1px); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    15% { transform: translate(1px, -2px); }
+    25% { transform: translate(-2px, 1px); }
+    35% { transform: translate(2px, 1px); }
+    45% { transform: translate(-1px, -1px); }
+}
+
+@keyframes levelGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 128, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); }
+}
+
+@keyframes powerSurge {
+    0%, 100% { transform: scaleX(1); }
+    50% { transform: scaleX(1.05); }
+}
+
+@keyframes cyberPulse {
+    0%, 100% { 
+        background-position: 0% 50%;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+    50% { 
+        background-position: 100% 50%;
+        box-shadow: 0 0 30px rgba(255, 0, 128, 0.5);
+    }
+}
+
+@keyframes cyberActivate {
+    0% { transform: perspective(500px) rotateX(10deg) scale(1); }
+    50% { transform: perspective(500px) rotateX(5deg) scale(1.05); }
+    100% { transform: perspective(500px) rotateX(0deg) scale(1); }
+}
+
+@keyframes particleMove {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(20px, -20px) rotate(360deg); }
+}
+
+/* Gaming Background Effects */
+@keyframes matrixRain {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes cyberGrid {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(30px, 30px) rotate(1deg); }
+}
+
+@keyframes energyCore {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.2) rotate(180deg);
+        opacity: 1;
+    }
+}
+
+@keyframes floatingCubes {
+    0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+    33% { transform: translateY(-20px) rotateX(120deg) rotateY(120deg); }
+    66% { transform: translateY(10px) rotateX(240deg) rotateY(240deg); }
+}
+
+/* ===== MOVIE AGENCY ANIMATIONS ===== */
+@keyframes borderGlow {
+    0%, 100% { 
+        border-color: #ffd700;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+    50% { 
+        border-color: #ff6b6b;
+        box-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+    }
+}
+
+@keyframes curtainSway {
+    0%, 100% { transform: skewX(-5deg) translateX(0); }
+    50% { transform: skewX(-3deg) translateX(5px); }
+}
+
+@keyframes spotlightPulse {
+    0%, 100% { 
+        opacity: 0.2;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+@keyframes badgeShine {
+    0%, 100% { box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); }
+    50% { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6); }
+}
+
+@keyframes vintageGlow {
+    0%, 100% { 
+        text-shadow: 
+            0 0 10px #ffd700,
+            0 0 20px #ffd700,
+            0 0 40px #ffd700,
+            2px 2px 0px #8b4513,
+            4px 4px 0px #654321;
+    }
+    50% { 
+        text-shadow: 
+            0 0 15px #ffd700,
+            0 0 30px #ffd700,
+            0 0 60px #ffd700,
+            2px 2px 0px #8b4513,
+            4px 4px 0px #654321;
+    }
+}
+
+@keyframes marqueeLights {
+    0% { background-position: 0 0; }
+    100% { background-position: 45px 0; }
+}
+
+@keyframes reelSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes vintageButtonGlow {
+    0%, 100% { 
+        background-position: 0% 50%;
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    }
+    50% { 
+        background-position: 100% 50%;
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+    }
+}
+
+@keyframes shineEffect {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes lensRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes filmMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 -15px; }
+}
+
+/* Movie Background Effects */
+@keyframes oldFilmGrain {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+}
+
+@keyframes spotlightSweep {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(15deg); }
+}
+
+@keyframes floatingStars {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(180deg); }
+}
+
+/* ===== ROBOTICS AGENCY ANIMATIONS ===== */
+@keyframes holoPanelFlicker {
+    0%, 100% { 
+        opacity: 0.8;
+        border-color: rgba(0, 212, 255, 0.3);
+    }
+    50% { 
+        opacity: 1;
+        border-color: rgba(0, 212, 255, 0.6);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    }
+}
+
+@keyframes statUpdate {
+    0%, 100% { color: #00d4ff; }
+    50% { color: #ff9500; }
+}
+
+@keyframes gridScan {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+@keyframes scanLine {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes robotPulse {
+    0%, 100% { 
+        opacity: 0.2;
+        transform: translateY(-50%) scale(1);
+    }
+    50% { 
+        opacity: 0.4;
+        transform: translateY(-50%) scale(1.05);
+    }
+}
+
+@keyframes aiPulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(255, 149, 0, 0.5); }
+}
+
+@keyframes holoGlow {
+    0%, 100% { 
+        text-shadow: 
+            0 0 10px #00d4ff,
+            0 0 20px #00d4ff,
+            0 0 40px #00d4ff;
+    }
+    50% { 
+        text-shadow: 
+            0 0 15px #00d4ff,
+            0 0 30px #00d4ff,
+            0 0 60px #00d4ff;
+    }
+}
+
+@keyframes helixRotate {
+    0% { transform: rotate(0deg) scaleX(1); }
+    50% { transform: rotate(180deg) scaleX(1.1); }
+    100% { transform: rotate(360deg) scaleX(1); }
+}
+
+@keyframes progressFill {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes quantumPulse {
+    0%, 100% { 
+        background-position: 0% 50%;
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+    50% { 
+        background-position: 100% 50%;
+        box-shadow: 0 0 30px rgba(255, 149, 0, 0.5);
+    }
+}
+
+@keyframes quantumFloat {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(15px, -15px) rotate(360deg); }
+}
+
+/* Robotics Background Effects */
+@keyframes quantumField {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes neuralNetwork {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(20px, -10px) rotate(5deg); }
+}
+
+@keyframes dataStreams {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes hologramDistortion {
+    0%, 100% { transform: skewX(0deg); }
+    50% { transform: skewX(2deg); }
+}
+
+/* ===== WEB AGENCY ANIMATIONS ===== */
+@keyframes editorGlow {
+    0%, 100% { 
+        border-color: rgba(14, 165, 233, 0.3);
+        box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
+    }
+    50% { 
+        border-color: rgba(14, 165, 233, 0.6);
+        box-shadow: 0 0 30px rgba(14, 165, 233, 0.3);
+    }
+}
+
+@keyframes terminalFlicker {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
+}
+
+@keyframes typeWriter {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 0; }
+}
+
+@keyframes versionPulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(14, 165, 233, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(96, 165, 250, 0.5); }
+}
+
+@keyframes codeGlow {
+    0%, 100% { 
+        text-shadow: 
+            0 0 10px #0ea5e9,
+            0 0 20px #0ea5e9,
+            0 0 40px #0ea5e9;
+    }
+    50% { 
+        text-shadow: 
+            0 0 15px #0ea5e9,
+            0 0 30px #0ea5e9,
+            0 0 60px #0ea5e9;
+    }
+}
+
+@keyframes syntaxFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes techFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes codePulse {
+    0%, 100% { 
+        background-position: 0% 50%;
+        box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+    }
+    50% { 
+        background-position: 100% 50%;
+        box-shadow: 0 0 30px rgba(96, 165, 250, 0.5);
+    }
+}
+
+@keyframes bracketPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes codeFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes codeHighlight {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Web Background Effects */
+@keyframes binaryRain {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes gridPattern {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+@keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes syntaxParticles {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Extra FX - unique per theme */
+/* Gaming CRT scanlines + glow ring */
+.gaming-agency .scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.0) 0px,
+        rgba(0, 0, 0, 0.0) 2px,
+        rgba(0, 255, 255, 0.05) 3px,
+        rgba(0, 255, 255, 0.05) 4px
+    );
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    animation: scanFlicker 1.2s steps(2) infinite;
+}
+
+.gaming-agency .glow-ring {
+    position: absolute;
+    width: 60vmin; height: 60vmin;
+    border-radius: 50%;
+    left: 10%; bottom: -10%;
+    background: radial-gradient(circle, rgba(0,255,255,0.25) 0%, rgba(0,255,255,0.0) 60%);
+    filter: blur(8px);
+    animation: ringDrift 12s ease-in-out infinite;
+}
+
+@keyframes scanFlicker {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.9; }
+}
+
+@keyframes ringDrift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, -10px) scale(1.05); }
+}
+
+/* Movie bokeh lights */
+.movie-agency .bokeh {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+.movie-agency .bokeh::before,
+.movie-agency .bokeh::after {
+    content: "";
+    position: absolute;
+    width: 80vmin; height: 80vmin;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.25;
+}
+.movie-agency .bokeh::before {
+    top: -10%; right: -10%;
+    background: radial-gradient(circle, rgba(255,215,0,0.4), rgba(255,215,0,0));
+    animation: bokehFloat1 14s ease-in-out infinite;
+}
+.movie-agency .bokeh::after {
+    bottom: -15%; left: -10%;
+    background: radial-gradient(circle, rgba(255,107,107,0.35), rgba(255,107,107,0));
+    animation: bokehFloat2 16s ease-in-out infinite;
+}
+
+@keyframes bokehFloat1 {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(-30px, 10px) scale(1.1); }
+}
+@keyframes bokehFloat2 {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(20px, -20px) scale(0.9); }
+}
+
+/* Robotics accent bar + iso grid */
+.robotics-agency .accent-bar {
+    position: absolute;
+    left: max(5vw, 16px);
+    top: 50%; transform: translateY(-50%);
+    width: 4px; height: 60vh;
+    background: linear-gradient(180deg, #00d4ff, #ff9500);
+    box-shadow: 0 0 20px rgba(0,212,255,0.6);
+}
+
+.robotics-agency .iso-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(30deg, rgba(0,212,255,0.08) 1px, transparent 1px),
+      linear-gradient(150deg, rgba(0,212,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 80px 80px;
+    mask-image: radial-gradient(circle at 70% 30%, black 40%, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle at 70% 30%, black 40%, transparent 70%);
+    animation: isoDrift 18s linear infinite;
+}
+
+@keyframes isoDrift {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(40px, 0); }
+}
+
+/* Subtle per-theme layout differentiators */
+.gaming-agency .hero-content { text-align: left; max-width: 900px; }
+.movie-agency .hero-content { text-align: center; max-width: 760px; letter-spacing: 0.5px; }
+.robotics-agency .hero-content { text-align: right; max-width: 880px; }
+.web-agency .hero-content { text-align: left; }
+
+/* Creator Credit */
+.creator-credit {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 25;
+    pointer-events: none;
+}
+
+.credit-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    animation: creditGlow 4s ease-in-out infinite;
+}
+
+.creator-name {
+    color: #00d4ff;
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    position: relative;
+}
+
+.creator-name:hover {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
+    transform: translateY(-1px);
+}
+
+.creator-name:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    animation: linkUnderline 0.3s ease-in-out;
+}
+
+@keyframes linkUnderline {
+    0% { width: 0; left: 50%; }
+    100% { width: 100%; left: 0; }
+}
+
+.credit-separator {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+.credit-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+    font-style: italic;
+}
+
+@keyframes creditGlow {
+    0%, 100% { 
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    50% { 
+        border-color: rgba(0, 212, 255, 0.4);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 0 1rem;
+    }
+    
+    .slider-nav {
+        padding: 0 1rem;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .slide-indicators {
+        bottom: 3rem;
+    }
+    
+    .creator-credit {
+        bottom: 5px;
+    }
+    
+    .credit-content {
+        padding: 6px 16px;
+        font-size: 10px;
+    }
+    
+    .creator-name {
+        font-size: 11px;
+    }
+    
+    .credit-text {
+        font-size: 9px;
+    }
+}
